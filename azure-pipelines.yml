@@ -31,3 +31,12 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Visual Studio Enterprise Subscription (d63c6fa4-dc39-4534-a425-b49d1b0dd254)'
+    appType: 'webApp'
+    WebAppName: 'mavenapp'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
